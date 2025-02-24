@@ -15,7 +15,13 @@ strategy:
       python.version: '3.7'
 
 steps:
-- task: Maven@3
+- task: PowerShell@1
+  inputs:
+    targetType: 'inline'
+    script: |
+      echo "##vso[task.setvariable variable=JAVA_HOME]$(JAVA_HOME_11_X64)"
+      echo "##vso[task.setvariable variable=PATH]$(JAVA_HOME_11_X64)\bin;$(PATH)"
+- task: Maven@2
   inputs:
     mavenPomFile: 'pom.xml'
     mavenOptions: '-Xmx3072m'
