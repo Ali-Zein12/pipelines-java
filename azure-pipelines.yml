@@ -7,6 +7,12 @@ trigger:
 - main
 
 pool: First Managed Pool
+strategy:
+  matrix:
+    Python36:
+      python.version: '3.6'
+    Python37:
+      python.version: '3.7'
 
 steps:
 - task: Maven@3
